@@ -1,7 +1,6 @@
 library user_repository;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/entities/entities.dart';
+export 'src/models/models.dart';
+export 'src/user_repo.dart';
+export 'src/firebase_user_repo.dart';
