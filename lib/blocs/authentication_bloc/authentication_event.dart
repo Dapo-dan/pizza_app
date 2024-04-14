@@ -6,3 +6,9 @@ sealed class AuthenticationEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class AuthenticationUserChanged extends AuthenticationEvent {
+  final MyUser? user;
+
+  const AuthenticationUserChanged(this.user);
+}
