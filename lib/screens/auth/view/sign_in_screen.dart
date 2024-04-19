@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pizza_app/components/my_text_field.dart';
 import 'package:pizza_app/screens/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
@@ -59,12 +60,58 @@ class _SignInScreenState extends State<SignInScreen> {
                 validator: (val) {
                   if (val!.isEmpty) {
                     return 'Please fill this field';
-                  } else if (val.isEmpty) {
+                  } else if (!RegExp(
+                          r'^\s*[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}\s*$')
+                      .hasMatch(val)) {
                     return 'Please enter a valid email';
                   }
                   return '';
                 },
               ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: MyTextField(
+                controller: passwordController,
+                hintText: 'Password',
+                obscureText: obscurePassword,
+                keyboardType: TextInputType.visiblePassword,
+                prefixIcon: const Icon(
+                  CupertinoIcons.lock_fill,
+                ),
+                errorMsg: _errorMsg,
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return 'Please fill this field';
+                  } else if (!RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$')
+                      .hasMatch(val)) {
+                    return 'Please enter a valid email';
+                  }
+                  return '';
+                },
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      obscurePassword = !obscurePassword;
+                      if (obscurePassword) {
+                        iconPassword = CupertinoIcons.eye_fill;
+                      } else {
+                        iconPassword = CupertinoIcons.eye_slash_fill;
+                      }
+                    });
+                  },
+                  icon: Icon(iconPassword),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20,),
+            !signInRequired
+            ? SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: TextButton(onPressed: (){}, child: child),
             )
           ],
         ),
