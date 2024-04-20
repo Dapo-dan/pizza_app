@@ -107,12 +107,47 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             !signInRequired
-            ? SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
-              child: TextButton(onPressed: (){}, child: child),
-            )
+                ? SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: TextButton(
+                      onPressed: () {
+                        if (_formKey.currentContext!.validate()) {
+                          context.read<SignInBloc>().add(SignInRequired(
+                                emailController.text,
+                                passwordController.text,
+                              ));
+                        }
+                      },
+                      style: TextButton.styleFrom(
+                          elevation: 3.0,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              60,
+                            ),
+                          )),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                        child: Text(
+                          'Sign In',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                : const CircularProgressIndicator(),
           ],
         ),
       ),
