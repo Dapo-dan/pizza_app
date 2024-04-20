@@ -65,7 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       .hasMatch(val)) {
                     return 'Please enter a valid email';
                   }
-                  return '';
+                  return ''; // Return null if validation passes
                 },
               ),
             ),
@@ -88,19 +88,17 @@ class _SignInScreenState extends State<SignInScreen> {
                     return 'Please fill this field';
                   } else if (!RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$')
                       .hasMatch(val)) {
-                    return 'Please enter a valid email';
+                    return 'Please enter a valid password'; // Fixed message
                   }
-                  return '';
+                  return ''; // Return null if validation passes
                 },
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
                       obscurePassword = !obscurePassword;
-                      if (obscurePassword) {
-                        iconPassword = CupertinoIcons.eye_fill;
-                      } else {
-                        iconPassword = CupertinoIcons.eye_slash_fill;
-                      }
+                      iconPassword = obscurePassword
+                          ? CupertinoIcons.eye_fill
+                          : CupertinoIcons.eye_slash_fill;
                     });
                   },
                   icon: Icon(iconPassword),
@@ -115,7 +113,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: TextButton(
                       onPressed: () {
-                        if (_formKey.currentContext!.validate()) {
+                        if (_formKey.currentState!.validate()) {
+                          // Fixed validation
                           context.read<SignInBloc>().add(SignInRequired(
                                 emailController.text,
                                 passwordController.text,
@@ -123,15 +122,13 @@ class _SignInScreenState extends State<SignInScreen> {
                         }
                       },
                       style: TextButton.styleFrom(
-                          elevation: 3.0,
-                          backgroundColor:
-                              Theme.of(context).colorScheme.primary,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              60,
-                            ),
-                          )),
+                        elevation: 3.0,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(60),
+                        ),
+                      ),
                       child: const Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 25, vertical: 5),
