@@ -179,7 +179,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Text(
                       "~ 1 lowercase",
                       style: TextStyle(
-                        color: containsUpperCase
+                        color: containsLowerCase
                             ? Colors.green
                             : Theme.of(context).colorScheme.onBackground,
                       ),
@@ -187,7 +187,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Text(
                       "~ 1 number",
                       style: TextStyle(
-                        color: containsUpperCase
+                        color: containsNumber
                             ? Colors.green
                             : Theme.of(context).colorScheme.onBackground,
                       ),
@@ -200,7 +200,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Text(
                       "~ 1 special sharacter",
                       style: TextStyle(
-                        color: containsUpperCase
+                        color: containsSpecialChar
                             ? Colors.green
                             : Theme.of(context).colorScheme.onBackground,
                       ),
@@ -208,7 +208,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Text(
                       "~ 8 minimum characters",
                       style: TextStyle(
-                        color: containsUpperCase
+                        color: contains8Length
                             ? Colors.green
                             : Theme.of(context).colorScheme.onBackground,
                       ),
@@ -223,8 +223,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               child: MyTextField(
-                controller: emailController,
-                hintText: 'NAme',
+                controller: nameController,
+                hintText: 'Name',
                 obscureText: false,
                 keyboardType: TextInputType.name,
                 prefixIcon: const Icon(
@@ -241,8 +241,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 },
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
+            const SizedBox(
+              height: 10,
             ),
             !signUpRequired
                 ? SizedBox(

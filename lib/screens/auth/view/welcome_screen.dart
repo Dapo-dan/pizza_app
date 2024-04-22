@@ -76,7 +76,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               Align(
                 alignment: Alignment.center,
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 1.8,
+                  height: MediaQuery.of(context).size.height / 1.6,
                   child: Column(
                     children: [
                       Padding(
