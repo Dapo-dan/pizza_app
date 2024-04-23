@@ -61,7 +61,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   if (val!.isEmpty) {
                     return 'Please fill this field';
                   } else if (!RegExp(
-                          r'^\s*[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}\s*$')
+                          r'^\s*[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}\*$')
                       .hasMatch(val)) {
                     return 'Please enter a valid email';
                   }
