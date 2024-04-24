@@ -8,7 +8,7 @@ class MyTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final VoidCallback? onTap;
   final Widget? prefixIcon;
-  final String Function(String?)? validator;
+  final String? Function(String?)? validator;
   final FocusNode? focusNode;
   final String? errorMsg;
   final String Function(String?)? onChanged;
@@ -40,22 +40,23 @@ class MyTextField extends StatelessWidget {
       textInputAction: TextInputAction.next,
       onChanged: onChanged,
       decoration: InputDecoration(
-          suffixIcon: suffixIcon,
-          prefixIcon: prefixIcon,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            borderSide: const BorderSide(color: Colors.transparent),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.secondary),
-          ),
-          fillColor: Colors.grey.shade200,
-          filled: true,
-          hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey[500]),
-          errorText: errorMsg),
+        suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: const BorderSide(color: Colors.transparent),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.0),
+          borderSide:
+              BorderSide(color: Theme.of(context).colorScheme.secondary),
+        ),
+        fillColor: Colors.grey.shade200,
+        filled: true,
+        hintText: hintText,
+        hintStyle: TextStyle(color: Colors.grey[500]),
+        errorText: errorMsg,
+      ),
     );
   }
 }

@@ -69,7 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       .hasMatch(val)) {
                     return 'Please enter a valid email';
                   }
-                  return ''; // Return null if validation passes
+                  return null; // Return null if validation passes
                 },
               ),
             ),
@@ -139,11 +139,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 validator: (val) {
                   if (val!.isEmpty) {
                     return 'Please fill this field';
-                  } else if (!RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$')
+                  } else if (!RegExp(
+                          r"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-_@$!%*#?&()])[A-Za-z\d\-_@$!%^*.,~`#?&()]{8,}$")
                       .hasMatch(val)) {
-                    return 'Please enter a valid password'; // Fixed message
+                    return 'Please enter a valid password';
                   }
-                  return ''; // Return null if validation passes
+                  return null;
                 },
                 suffixIcon: IconButton(
                   onPressed: () {
@@ -237,7 +238,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   } else if (val.length > 30) {
                     return 'Name too long';
                   }
-                  return ''; // Return null if validation passes
+                  return null; // Return null if validation passes
                 },
               ),
             ),
@@ -251,7 +252,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           MyUser myUser = MyUser.empty;
-
                           myUser.email = emailController.text;
                           myUser.name = nameController.text;
 
