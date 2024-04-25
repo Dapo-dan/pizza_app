@@ -95,6 +95,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                               child: Text(
                                 'Sign In',
                                 style: TextStyle(fontSize: 18),
+                                semanticsLabel: 'Sign In',
                               ),
                             ),
                             Padding(
@@ -102,6 +103,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                               child: Text(
                                 'Sign Up',
                                 style: TextStyle(fontSize: 18),
+                                semanticsLabel: 'Sign Up',
                               ),
                             ),
                           ],
